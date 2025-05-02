@@ -15,6 +15,8 @@ public class Customer {
     private String password;
     private String address;
     private String phone;
+    @Column(length = 100000)
+    private String profileImage;
 
     public long getId() {
         return id;
@@ -62,5 +64,13 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }

@@ -13,4 +13,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     // ค้นหาลูกค้าตามอีเมลและรหัสผ่าน
     Optional<Customer> findByEmailAndPassword(String email, String password);
+
+
 }
