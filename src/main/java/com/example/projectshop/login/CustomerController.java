@@ -20,9 +20,6 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @Autowired
-    private OrderService orderService; // เพิ่ม OrderService เพื่อให้สามารถดึงข้อมูลการสั่งซื้อ
-
     // สมัครสมาชิก
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody Customer customer) {
@@ -83,16 +80,5 @@ public class CustomerController {
         }
     }
 
-    // ดึงข้อมูลประวัติการสั่งซื้อ
-    @GetMapping("/orders")
-    public ResponseEntity<List<Order>> getOrders(@RequestParam String email) {
-        // ดึงข้อมูลจากฐานข้อมูลหรือบริการที่เก็บข้อมูลการสั่งซื้อ
-        List<Order> orders = orderService.getOrdersByEmail(email);
 
-        if (orders != null && !orders.isEmpty()) {
-            return ResponseEntity.ok(orders);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
 }
