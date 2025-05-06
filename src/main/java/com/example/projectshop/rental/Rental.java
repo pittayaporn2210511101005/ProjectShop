@@ -1,5 +1,6 @@
 package com.example.projectshop.rental;
 
+import com.example.projectshop.dress.Dress;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,12 +12,20 @@ public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "dress_id", nullable = false)
-    private long dress;
+
+    @ManyToOne
+    @JoinColumn(name = "dress_id", nullable = false)
+    private Dress dress;
+
+    // สถานะการเช่า
+    @Enumerated(EnumType.STRING)
+    private RentalStatus status;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime start;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime end;
+    @Column(name = "price", nullable = false)
     private int price;
 
     public long getId() {
@@ -27,12 +36,20 @@ public class Rental {
         this.id = id;
     }
 
-    public long getDress() {
+    public Dress getDress() {
         return dress;
     }
 
-    public void setDress(long dress) {
+    public void setDress(Dress dress) {
         this.dress = dress;
+    }
+
+    public RentalStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(RentalStatus status) {
+        this.status = status;
     }
 
     public LocalDateTime getStart() {

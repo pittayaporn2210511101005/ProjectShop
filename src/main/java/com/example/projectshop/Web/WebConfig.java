@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3001") // ใส่ที่อยู่ frontend
+                .allowedOrigins("http://localhost:3000") // ใส่ที่อยู่ frontend
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*");
     }//เชื่อมหน้าบ้านหลังบ้าน
