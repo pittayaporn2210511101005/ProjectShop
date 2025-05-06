@@ -1,23 +1,22 @@
 package com.example.projectshop.dress;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "dress")
 public class Dress {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String brand;
-    private int price;
+    private double price;
     private String size;
     private String color;
     private LocalDateTime createdAt;
+    private String imageUrl;
     private String status;
 
     public long getId() {
@@ -44,11 +43,11 @@ public class Dress {
         this.brand = brand;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -66,6 +65,22 @@ public class Dress {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getStatus() {
