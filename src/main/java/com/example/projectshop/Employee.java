@@ -1,5 +1,6 @@
 package com.example.projectshop;
 
+import com.example.projectshop.rental.Rental;
 import jakarta.persistence.*;
 
 import java.util.List;
