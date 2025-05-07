@@ -1,8 +1,10 @@
 package com.example.projectshop.dress;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "dress")
@@ -15,8 +17,17 @@ public class Dress {
     private double price;
     private String size;
     private String color;
+    @Column(updatable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String image;  // base64 string
+
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
+
     private String status;
 
     public long getId() {
@@ -73,6 +84,14 @@ public class Dress {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getImageUrl() {

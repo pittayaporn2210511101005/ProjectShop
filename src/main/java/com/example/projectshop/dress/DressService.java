@@ -25,16 +25,32 @@ public class DressService {
             updatedDress.setName(dress.getName());
             updatedDress.setBrand(dress.getBrand());
             updatedDress.setPrice(dress.getPrice());
-            updatedDress.setSize(dress.getSize());
-            updatedDress.setColor(dress.getColor());
+            updatedDress.setSize(dress.getSize()); // เปลี่ยนเป็น setSize แทน setSizes
+            updatedDress.setColor(dress.getColor()); // เปลี่ยนเป็น setColor แทน setColors
             updatedDress.setStatus(dress.getStatus());
             return dressRepository.save(updatedDress);
         }
-        return null; // ถ้าไม่พบข้อมูล
+        return null; // ถ้าไม่พบชุดที่ต้องการอัปเดต
     }
+
+    // ลบเสื้อผ้า
+    public boolean deleteDress(String id) {
+        try {
+            Long idLong = Long.parseLong(id);  // แปลง id จาก String เป็น Long
+            Dress dress = dressRepository.findById(idLong).orElse(null);
+            if (dress != null) {
+                dressRepository.delete(dress);  // ลบชุด
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return false; // ถ้าเกิดข้อผิดพลาด
+        }
+    }
+
 
     // ดึงข้อมูลเสื้อผ้าทั้งหมด
     public List<Dress> getAllDresses() {
-        return dressRepository.findAll();  // ดึงข้อมูลทั้งหมดจากฐานข้อมูล
+        return dressRepository.findAll();
     }
 }
