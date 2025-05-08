@@ -19,6 +19,7 @@ public class DressController {
     // Endpoint สำหรับบันทึกเสื้อผ้า
     @PostMapping("/save")
     public Dress addDress(@RequestBody Dress dress) {
+        System.out.println("image_URL: " + dress.getImageUrl());
 
         // ถ้าอยากสร้าง imageUrl แบบ mock (เช่น "/images/{id}")
         if (dress.getImageUrl() == null || dress.getImageUrl().isEmpty()) {
